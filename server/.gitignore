@@ -1,0 +1,6 @@
+node_modules
+.env
+dist
+.git add servernext
+.vscode
+.DS_Store
