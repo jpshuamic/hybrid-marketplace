@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "postgres",
+    "password": "jpshua",
+    "database": "hybrid_marketplace",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "postgres",
+    "password": "jpshua",
+    "database": "hybrid_marketplace_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "postgres",
+    "password": "jpshua",
+    "database": "hybrid_marketplace_prod",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

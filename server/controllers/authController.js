@@ -1,10 +1,9 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+const { User } = require('../models');
 
 exports.register = async (req, res) => {
   const { username, email, password } = req.body;
-
   try {
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) return res.status(400).json({ error: 'Email already in use' });
@@ -20,7 +19,6 @@ exports.register = async (req, res) => {
 
 exports.login = async (req, res) => {
   const { email, password } = req.body;
-
   try {
     const user = await User.findOne({ where: { email } });
     if (!user) return res.status(404).json({ message: 'User not found' });
@@ -35,9 +33,8 @@ exports.login = async (req, res) => {
       user: { id: user.id, username: user.username, email: user.email },
       token,
     });
-
   } catch (error) {
-    console.error('Login error:', error);
-    res.status(500).json({ message: 'Server error' });
-  }
+  console.error('❌ Login Error:', error.message);
+  res.status(500).json({ message: 'Login failed', details: error.message });
+}
 };
